@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - DevOps Engineer & Cloud Specialist</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> <!-- Linking the external CSS file -->
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <link rel="icon" href="bot.png" />
 </head>
 <body>
     <!-- Header -->
@@ -162,6 +164,9 @@
         </div>
     </section>
 
+
+    
+    
     <!-- Certifications Section -->
     <section class="certifications" id="certifications">
         <h2>Certifications</h2>
@@ -265,11 +270,35 @@
         </p>
     </section>
     
-
+    <div id="chatbot-container">
+        <div id="chatbot" class="chatbot">
+            <div id="chatbot-header">
+                <h4>Chat with me!</h4>
+                <button id="close-chatbot">X</button>
+            </div>
+            <div id="chatbot-body">
+                <div id="messages" class="messages"></div>
+                <div id="chat-input">
+                    <input id="input" type="text" placeholder="Say something..." autocomplete="off" autofocus="true" />
+                    <button id="send-message">Send</button>
+                </div>
+            </div>
+        </div>
+        <button id="open-chatbot">💬</button>
+    </div>
+    
+    
         
     <!-- Footer -->
     <footer>
         <p>© 2025 JANANI ASOKAN</p>
     </footer>
+
+    <!-- <script type="text/javascript" src="index.js" ></script>
+<script type="text/javascript" src="constants.js" ></script> -->
+<script type="text/javascript" src="speech.js" ></script>
+
+<script type="module" src="index.js"></script>
+
 </body>
 </html>
