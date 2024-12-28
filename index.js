@@ -97,7 +97,7 @@ function viewCV() {
     var iframe = document.getElementById("cvViewer");
 
     // Change the source of the iframe to the CV file stored in the "assets" folder
-    iframe.src = "https://github.com/fuzzywe/portfolio/blob/master/assets/cv.pdf";  // Update this path accordingly
+    iframe.src = "https://raw.githubusercontent.com/fuzzywe/portfolio/master/assets/cv.pdf" ;
 
     // Display the iframe
     iframe.style.display = "block";
