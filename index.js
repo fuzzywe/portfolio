@@ -1,22 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
     const inputField = document.getElementById("input");
-    const openChatbotButton = document.getElementById("open-chatbot"); // Add this to your HTML if needed
-    const closeChatbotButton = document.getElementById("close-chatbot"); // Add this to your HTML if needed
+    const openChatbotButton = document.getElementById("open-chatbot");
+    const closeChatbotButton = document.getElementById("close-chatbot");
     const chatbot = document.getElementById("chatbot");
     const messagesContainer = document.getElementById("messages");
 
-    // Optional: Open chatbot (ensure these buttons exist in your HTML)
-    if (openChatbotButton && closeChatbotButton) {
-        openChatbotButton.addEventListener("click", () => {
-            chatbot.style.display = "block";
-            openChatbotButton.style.display = "none";
-        });
+    // Open chatbot
+    openChatbotButton.addEventListener("click", () => {
+        chatbot.style.display = "block";
+        openChatbotButton.style.display = "none";
+    });
 
-        closeChatbotButton.addEventListener("click", () => {
-            chatbot.style.display = "none";
-            openChatbotButton.style.display = "block";
-        });
-    }
+    // Close chatbot
+    closeChatbotButton.addEventListener("click", () => {
+        chatbot.style.display = "none";
+        openChatbotButton.style.display = "block";
+    });
 
     // Send a message
     inputField.addEventListener("keydown", (e) => {
@@ -41,12 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Generate a bot response
     function generateResponse(userInput) {
-        const botReply = getBotReply(userInput);
+        const botReply = getBotReply(userInput); // Replace this with your logic
         displayMessage(botReply, "bot");
-        textToSpeech(botReply); // Optional text-to-speech feature
+        textToSpeech(botReply); // Use text-to-speech for the bot reply
     }
 
-  // Integrated Bot response logic
+    // Integrated Bot response logic
 function getBotReply(input) {
     input = input.toLowerCase().trim();
     for (let i = 0; i < prompts.length; i++) {
@@ -66,3 +65,24 @@ function getBotReply(input) {
     return alternative[Math.floor(Math.random() * alternative.length)];
 }
 
+});
+openChatbotButton.addEventListener("touchstart", () => {
+    chatbot.style.display = "block";
+    openChatbotButton.style.display = "none";
+});
+
+closeChatbotButton.addEventListener("touchstart", () => {
+    chatbot.style.display = "none";
+    openChatbotButton.style.display = "block";
+});
+inputField.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.code === "Enter") {
+        const userInput = inputField.value.trim();
+        if (userInput) {
+            displayMessage(userInput, "user");
+            inputField.value = "";
+            generateResponse(userInput);
+        }
+        e.preventDefault();  // Prevent keyboard issues on mobile
+    }
+});
