@@ -1158,3 +1158,44 @@ button, a {
 
     /* Rest of the small phone styles remain the same */
 }
+/* Projects Section - Mobile View */
+@media screen and (max-width: 768px) {
+    #projects {
+        padding: 30px 15px;
+    }
+
+    .project-grid {
+        display: flex;
+        flex-direction: column; /* Stack projects vertically */
+        align-items: center;
+        gap: 20px; /* Consistent spacing between projects */
+    }
+
+    .project-item {
+        width: 100%;
+        max-width: none;
+        margin: 0; /* Remove margins as we're using gap */
+        padding: 15px;
+    }
+}
+
+/* Certifications Section - Mobile View */
+@media screen and (max-width: 768px) {
+    .certifications {
+        padding: 30px 15px;
+    }
+
+    .certification-list {
+        display: flex;
+        flex-direction: column; /* Stack certifications vertically */
+        align-items: center;
+        gap: 20px; /* Consistent spacing between certifications */
+    }
+
+    .certification-item {
+        width: 100%;
+        max-width: none;
+        margin: 0; /* Remove margins as we're using gap */
+        padding: 15px;
+    }
+}
