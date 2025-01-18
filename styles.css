@@ -646,4 +646,75 @@ footer p {
     font-size: 20px;
 }
 
+#chatbot {
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    width: 90%; /* Adjust for mobile screen */
+    max-height: 50vh; /* Limit height to half screen */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 9999;
+}
+#open-chatbot, #close-chatbot {
+    font-size: 14px;
+    padding: 8px 12px;
+}
+
+#input {
+    width: 80%;  /* Make input field take up more space */
+    padding: 10px;
+    font-size: 16px;
+}
+.interview-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.interview-card {
+    flex: 1 1 calc(100% - 20px); /* Each card takes full width on small screens */
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+@media screen and (max-width: 768px) {
+    h1, h2, h3 {
+        font-size: 18px;
+    }
+    
+    p {
+        font-size: 14px;
+    }
+
+    .interview-question {
+        margin-bottom: 12px;
+    }
+}
+.container {
+    padding: 10px;
+}
+
+.section {
+    padding: 20px;
+    margin: 10px 0;
+}
+
+@media screen and (max-width: 480px) {
+    .header, .footer {
+        text-align: center;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr; /* Make skills one column on small screens */
+    }
+}
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+button, a {
+    touch-action: manipulation;
+    padding: 12px;
+    font-size: 16px;
+}
 
