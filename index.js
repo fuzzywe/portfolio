@@ -45,15 +45,44 @@ document.addEventListener("DOMContentLoaded", () => {
         textToSpeech(botReply); // Use text-to-speech for the bot reply
     }
 
-    // Bot response logic
-    function getBotReply(input) {
-        input = input.toLowerCase();
-        if (input.includes("hello")) {
-            return "Hi there! How can I assist you today?";
-        } else if (input.includes("help")) {
-            return "Sure, let me know what you need help with.";
-        } else {
-            return "I'm sorry, I didn't understand that. Can you please rephrase?";
+    // Integrated Bot response logic
+function getBotReply(input) {
+    input = input.toLowerCase().trim();
+    for (let i = 0; i < prompts.length; i++) {
+        for (let j = 0; j < prompts[i].length; j++) {
+            if (input.includes(prompts[i][j])) {
+                const botReply = replies[i][Math.floor(Math.random() * replies[i].length)];
+                return botReply;
+            }
         }
+    }
+
+    if (input.includes("covid") || input.includes("corona") || input.includes("virus")) {
+        return coronavirus[Math.floor(Math.random() * coronavirus.length)];
+    }
+
+    // If input does not match any known prompts
+    return alternative[Math.floor(Math.random() * alternative.length)];
+}
+
+});
+openChatbotButton.addEventListener("touchstart", () => {
+    chatbot.style.display = "block";
+    openChatbotButton.style.display = "none";
+});
+
+closeChatbotButton.addEventListener("touchstart", () => {
+    chatbot.style.display = "none";
+    openChatbotButton.style.display = "block";
+});
+inputField.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.code === "Enter") {
+        const userInput = inputField.value.trim();
+        if (userInput) {
+            displayMessage(userInput, "user");
+            inputField.value = "";
+            generateResponse(userInput);
+        }
+        e.preventDefault();  // Prevent keyboard issues on mobile
     }
 });
