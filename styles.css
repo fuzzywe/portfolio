@@ -756,4 +756,208 @@ button, a {
     cursor: pointer;
     width: auto;
 }
+@media screen and (max-width: 768px) {
+    /* General adjustments */
+    body {
+        font-size: 14px;
+        padding: 0;
+    }
 
+    /* Navigation adjustments */
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+        position: static;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #444;
+    }
+
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    /* Hero section adjustments */
+    .hero {
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        padding: 20px 0;
+    }
+
+    .hero-text h2 {
+        font-size: 2em;
+    }
+
+    .hero-text p {
+        font-size: 1.1em;
+    }
+
+    .hero-image img {
+        max-width: 60%;
+        margin: 20px auto;
+    }
+
+    /* Skills section adjustments */
+    .skills-list {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .skill-category {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Projects section adjustments */
+    .project-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-item {
+        width: 90%;
+        max-width: none;
+        margin-bottom: 20px;
+    }
+
+    /* Certifications section adjustments */
+    .certification-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .certification-item {
+        width: 90%;
+        max-width: none;
+    }
+
+    /* Social section adjustments */
+    .social-section {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .social-links {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .social-links a {
+        font-size: 1.5rem;
+    }
+
+    /* Contact form adjustments */
+    #contact form {
+        width: 90%;
+        padding: 0 15px;
+    }
+
+    #contact input,
+    #contact textarea {
+        margin-bottom: 15px;
+    }
+
+    /* Achievement section adjustments */
+    .achievement {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .achievement h2 {
+        font-size: 20px;
+    }
+
+    .achievement p {
+        font-size: 16px;
+    }
+
+    /* Profile photo adjustments */
+    .profile-photo {
+        width: 150px;
+        height: auto;
+        margin: 20px auto;
+    }
+
+    /* CV section adjustments */
+    iframe {
+        width: 95%;
+        height: 400px;
+    }
+
+    /* Button adjustments */
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    /* Chatbot adjustments */
+    #chatbot-container {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        z-index: 1000;
+        display: none;
+    }
+
+    #chatbot {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        position: relative;
+    }
+
+    #messages {
+        height: calc(100vh - 120px);
+    }
+
+    #input {
+        width: 70%;
+    }
+
+    #send-message {
+        width: 25%;
+    }
+
+    #open-chatbot {
+        bottom: 10px;
+        right: 10px;
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+/* Small phones */
+@media screen and (max-width: 480px) {
+    .hero-text h2 {
+        font-size: 1.8em;
+    }
+
+    .hero-text p {
+        font-size: 1em;
+    }
+
+    .social-links a {
+        font-size: 1.2rem;
+        padding: 8px;
+    }
+
+    #contact h2,
+    #projects h2,
+    #skills h2,
+    .certifications h2 {
+        font-size: 2rem;
+    }
+}
