@@ -1,59 +1,59 @@
 document.addEventListener("DOMContentLoaded", () => {
     const inputField = document.getElementById("input");
-    const openChatbotButton = document.getElementById("open-chatbot");
-    const closeChatbotButton = document.getElementById("close-chatbot");
+    const openChatbotButton = document.getElementById("open-chatbot"); // Add this to your HTML if needed
+    const closeChatbotButton = document.getElementById("close-chatbot"); // Add this to your HTML if needed
     const chatbot = document.getElementById("chatbot");
     const messagesContainer = document.getElementById("messages");
-    const sendButton = document.getElementById("send-button");
 
-    // Open chatbot
-    const toggleChatbot = (show) => {
-        chatbot.style.display = show ? "block" : "none";
-        openChatbotButton.style.display = show ? "none" : "block";
-    };
-    openChatbotButton.addEventListener("click", () => toggleChatbot(true));
-    closeChatbotButton.addEventListener("click", () => toggleChatbot(false));
+    // Optional: Open chatbot (ensure these buttons exist in your HTML)
+    if (openChatbotButton && closeChatbotButton) {
+        openChatbotButton.addEventListener("click", () => {
+            chatbot.style.display = "block";
+            openChatbotButton.style.display = "none";
+        });
+
+        closeChatbotButton.addEventListener("click", () => {
+            chatbot.style.display = "none";
+            openChatbotButton.style.display = "block";
+        });
+    }
 
     // Send a message
-    const handleSend = () => {
-        const userInput = inputField.value.trim();
-        if (userInput) {
-            displayMessage(userInput, "user");
-            inputField.value = "";
-            generateResponse(userInput);
-        }
-    };
-
-    sendButton.addEventListener("click", handleSend);
     inputField.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.code === "Enter") {
-            e.preventDefault();
-            handleSend();
+            const userInput = inputField.value.trim();
+            if (userInput) {
+                displayMessage(userInput, "user");
+                inputField.value = "";
+                generateResponse(userInput);
+            }
         }
     });
 
+    // Display a message in the chat
     function displayMessage(message, sender) {
         const messageElement = document.createElement("div");
         messageElement.className = sender === "user" ? "user-message" : "bot-message";
         messageElement.textContent = message;
         messagesContainer.appendChild(messageElement);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        messagesContainer.scrollTop = messagesContainer.scrollHeight; // Scroll to the bottom
     }
 
+    // Generate a bot response
     function generateResponse(userInput) {
         const botReply = getBotReply(userInput);
         displayMessage(botReply, "bot");
+        textToSpeech(botReply); // Optional text-to-speech feature
     }
 
+    // Bot response logic using prompts and replies
     function getBotReply(input) {
-        input = input.toLowerCase().trim();
+        input = input.toLowerCase();
         for (let i = 0; i < prompts.length; i++) {
-            if (prompts[i].includes(input)) {
-                return replies[i][Math.floor(Math.random() * replies[i].length)];
+            if (prompts[i].some(prompt => input.includes(prompt))) {
+                const repliesArray = replies[i];
+                return repliesArray[Math.floor(Math.random() * repliesArray.length)];
             }
-        }
-        if (input.includes("covid") || input.includes("corona") || input.includes("virus")) {
-            return coronavirus[Math.floor(Math.random() * coronavirus.length)];
         }
         return alternative[Math.floor(Math.random() * alternative.length)];
     }
