@@ -731,3 +731,29 @@ button, a {
 #send-button:active {
     background-color: #0056b3;
 }
+
+#chatbot {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.chat-input-container {
+    display: flex;
+    gap: 8px;
+}
+
+#input {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#send-button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: auto;
+}
+
