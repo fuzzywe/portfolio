@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeChatbotButton = document.getElementById("close-chatbot");
     const chatbot = document.getElementById("chatbot");
     const messagesContainer = document.getElementById("messages");
-
+ 
     // Open chatbot
     openChatbotButton.addEventListener("click", () => {
         chatbot.style.display = "block";
