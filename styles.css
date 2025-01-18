@@ -961,3 +961,24 @@ button, a {
         font-size: 2rem;
     }
 }
+.projects {
+  display: flex;
+  flex-direction: row; /* Default layout */
+  gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .projects {
+    flex-direction: column; /* Stacked layout for smaller screens */
+  }
+}
+.about-me {
+  padding: 2rem; /* Default padding */
+}
+
+@media screen and (max-width: 768px) {
+  .about-me {
+    padding: 1rem; /* Reduced padding for mobile */
+    margin-bottom: 1rem; /* Adjust margin as needed */
+  }
+}
