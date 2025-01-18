@@ -86,3 +86,13 @@ inputField.addEventListener("keydown", (e) => {
         e.preventDefault();  // Prevent keyboard issues on mobile
     }
 });
+const sendButton = document.getElementById("send-button");
+
+sendButton.addEventListener("click", () => {
+    const userInput = inputField.value.trim();
+    if (userInput) {
+        displayMessage(userInput, "user");
+        inputField.value = "";
+        generateResponse(userInput);
+    }
+});
