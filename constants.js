@@ -1,76 +1,54 @@
-// Options the user could type in
-const prompts = [
-  ["hi", "hey", "hello", "good morning", "good afternoon"],
-  ["how are you", "how is life", "how are things"],
-  ["what are you doing", "what is going on", "what is up"],
-  ["how old are you"],
-  ["who are you", "are you human", "are you bot", "are you human or bot"],
-  ["who created you", "who made you"],
-  [
-    "your name please",
-    "your name",
-    "may i know your name",
-    "what is your name",
-    "what call yourself"
-  ],
-  ["i love you"],
-  ["happy", "good", "fun", "wonderful", "fantastic", "cool"],
-  ["bad", "bored", "tired"],
-  ["help me", "tell me story", "tell me joke"],
-  ["ah", "yes", "ok", "okay", "nice"],
-  ["bye", "good bye", "goodbye", "see you later"],
-  ["what should i eat today"],
-  ["bro"],
-  ["what", "why", "how", "where", "when"],
-  ["no","not sure","maybe","no thanks"],
-  [""],
-  ["haha","ha","lol","hehe","funny","joke"]
-]
+// Custom chatbot code for Janani's portfolio
 
-// Possible responses, in corresponding order
+const userIntro = `Hello! I am Janani, currently pursuing an integrated M.Tech in Computer Science at VIT. I specialize in machine learning, web development, and AI-based solutions.`;
+
+const prompts = [
+  ["who is janani", "tell me about janani", "what is janani's background"],
+  ["what are janani's achievements",'achievements', "janani's experience", "projects by janani"],
+  ["what projects has janani worked on", 'projects',"explain janani's projects", "janani's projects"],
+  ["how did janani build the student portal", "student portal project", "explain student portal"],
+  ["stock price prediction", "how was stock prediction built", "explain stock prediction project"],
+  ["what did janani do in the weather app", "weather app project", "explain weather app"],
+  ["janani's passions", "what does janani love", "janani's interests"],
+  ["what technologies does janani know", "janani's skills", "programming languages"],
+  ["what is janani's hackathon experience", "isro hackathon", "hackathon projects"],
+  ["janani's future goals", "janani's aspirations", "where does janani see herself"],
+  ["challenges faced by janani", "problems solved by janani", "difficulties in projects"],
+  ["janani's education", "educational background", "where does janani study"],
+  ["what makes janani different", "janani's uniqueness", "janani's special skills"]
+];
 
 const replies = [
-  ["Hello!", "Hi!", "Hey!", "Hi there!","Howdy"],
-  [
-    "Fine... how are you?",
-    "Pretty well, how are you?",
-    "Fantastic, how are you?"
-  ],
-  [
-    "Nothing much",
-    "About to go to sleep",
-    "Can you guess?",
-    "I don't know actually"
-  ],
-  ["I am infinite"],
-  ["I am just a bot", "I am a bot. What are you?"],
-  ["The one true God, JavaScript"],
-  ["I am nameless", "I don't have a name"],
-  ["I love you too", "Me too"],
-  ["Have you ever felt bad?", "Glad to hear it"],
-  ["Why?", "Why? You shouldn't!", "Try watching TV"],
-  ["What about?", "Once upon a time..."],
-  ["Tell me a story", "Tell me a joke", "Tell me about yourself"],
-  ["Bye", "Goodbye", "See you later"],
-  ["Sushi", "Pizza"],
-  ["Bro!"],
-  ["Great question"],
-  ["That's ok","I understand","What do you want to talk about?"],
-  ["Please say something :("],
-  ["Haha!","Good one!"]
-]
+  ["Janani is an M.Tech Computer Science student at VIT, passionate about AI, machine learning, and solving real-world problems with technology."],
+  ["Her achievements include:\n1. ISRO Hackathon: 96% accuracy with YOLOv8.\n2. Developed a student portal for over 500 students.\n3. Created a Stock Price Prediction system and Weather App."],
+  ["Janani has worked on projects including:\n- Real-Time Stock Prediction.\n- A Student Portal Website.\n- Weather Forecasting App with API integration."],
+  ["The Student Portal automates solutions for common student problems, reducing manual effort with user-friendly interfaces."],
+  ["The Stock Price Prediction project uses Python, machine learning (LSTM models), and real-time market data integration."],
+  ["Janani's Weather App uses REST APIs to display real-time weather data based on user input."],
+  ["Janani is passionate about applying machine learning to practical applications and building innovative web solutions."],
+  ["She is skilled in Python, JavaScript, TensorFlow, YOLOv8, and web development technologies."],
+  ["In the ISRO Hackathon, Janani annotated 50,000 moon images with 96% accuracy, using YOLOv8 for image detection."],
+  ["Janani's future goals include advancing AI research and working on impactful technology projects."],
+  ["Some challenges Janani faced include optimizing API performance for live data in her stock prediction system."],
+  ["She is pursuing an integrated M.Tech in Computer Science at VIT."],
+  ["Her unique skill is blending machine learning expertise with real-world problem-solving."]
+];
 
-// Random for any other user input
+// Alternative response
+const alternative = ["I'm here to help you learn about Janani's work and skills! Try asking about her projects, achievements, or experience."];
 
-const alternative = [
-  "Same",
-  "Go on...",
-  "Bro...",
-  "Try again",
-  "I'm listening...",
-  "I don't understand :/"
-]
+// Reply function
+function getBotReply(input) {
+  input = input.toLowerCase();
+  for (let i = 0; i < prompts.length; i++) {
+    if (prompts[i].some((prompt) => input.includes(prompt))) {
+      return replies[i][Math.floor(Math.random() * replies[i].length)];
+    }
+  }
+  return alternative[Math.floor(Math.random() * alternative.length)];
+}
 
-// Whatever else you want :)
-
-const coronavirus = ["Please stay home", "Wear a mask", "Fortunately, I don't have COVID", "These are uncertain times"]
+// Example for testing
+console.log(getBotReply("tell me about janani"));
+console.log(getBotReply("what are janani's achievements"));
+console.log(getBotReply("how was the student portal created?"));
