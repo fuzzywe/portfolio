@@ -96,3 +96,13 @@ sendButton.addEventListener("click", () => {
         generateResponse(userInput);
     }
 });
+inputField.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.code === "Enter") {
+        e.preventDefault();  // Prevents form from submitting
+        sendButton.click();  // Simulate send button click
+    }
+});
+sendButton.addEventListener("click", () => {
+    console.log("Send button clicked");
+});
+
