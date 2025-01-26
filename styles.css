@@ -1,44 +1,34 @@
 /* For Laptop View */
 @media (min-width: 769px) {
-    .side-panel {
-        display: block;
-    }
-
-    header nav ul {
+    #nav-options {
         display: flex;
         justify-content: space-evenly;
+        padding: 0;
     }
 
     #menu-toggle {
-        display: none;
+        display: none; /* Hide toggle button on laptop */
     }
 }
 
 /* For Mobile View */
 @media (max-width: 768px) {
-    .side-panel {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: -250px;
-        width: 250px;
-        height: 100%;
-        background-color: #333;
-        transition: 0.3s;
-    }
-
-    .side-panel.active {
-        left: 0;
-    }
-
-    header nav ul {
-        display: none;
+    #nav-options {
+        display: none; /* Hide options initially */
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
     }
 
     #menu-toggle {
-        display: block;
+        display: block; /* Show toggle button on mobile */
+    }
+
+    #nav-options.active {
+        display: flex; /* Show options when toggle button is clicked */
     }
 }
+
 
 
 
