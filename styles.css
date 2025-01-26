@@ -1,39 +1,19 @@
-/* Reset and base styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-/* Desktop: Show the sections in the header */
+/* Laptop View (All options visible) */
 @media (min-width: 769px) {
     .side-panel {
-        display: none;  /* No sidebar toggle in desktop */
+        display: none;
     }
 
     header nav ul {
-        display: flex;  /* Show sections in the header */
+        display: flex;  /* All options visible in header */
         justify-content: space-evenly;
-    }
-
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
     }
 }
 
-/* Mobile: Sidebar and toggle button */
+/* Mobile View (Sidebar toggle) */
 @media (max-width: 768px) {
-    header nav ul {
-        display: none;  /* Hide sections in mobile view */
-    }
-
-    #menu-toggle {
-        display: block;  /* Show menu toggle button */
-    }
-
     .side-panel {
-        display: none;  /* Hide sidebar in mobile by default */
+        display: none;
         position: fixed;
         top: 0;
         left: -250px;
@@ -44,15 +24,18 @@
     }
 
     .side-panel.active {
-        left: 0;  /* Show sidebar when active */
+        left: 0;
     }
 
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    header nav ul {
+        display: none;  /* Hide options in header */
+    }
+
+    #menu-toggle {
+        display: block;  /* Show toggle button in mobile */
     }
 }
+
 
 
 body {
