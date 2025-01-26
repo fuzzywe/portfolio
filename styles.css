@@ -11,6 +11,26 @@ body {
     color: #f5f5f5;
     background-color: #1a1a1a; /* Dark background for a modern look */
 }
+#chatbot {
+    width: 100%;
+    max-width: 400px; /* Adjust for small screens */
+    height: 90vh; /* Allow full-screen chat */
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    border-radius: 10px;
+}
+
+#messages {
+    max-height: 70vh; /* Prevents overflow */
+    overflow-y: auto;
+}
+
+#input {
+    width: 100%;
+    font-size: 16px; /* Increases touch-friendly input */
+    padding: 10px;
+}
 
 a {
     text-decoration: none;
