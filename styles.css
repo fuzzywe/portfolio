@@ -4,65 +4,53 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* Sidebar */
-.side-panel {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background-color: #333;
-    transition: 0.3s;
-}
-
-.side-panel.active {
-    left: 0;
-}
-
-/* Sidebar content styling */
-.side-panel ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 50px;
-}
-
-.side-panel ul li {
-    padding: 15px;
-    text-align: left;
-}
-
-.side-panel ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-/* Mobile view: Show the menu toggle button */
-@media (max-width: 768px) {
-    #menu-toggle {
-        display: block;
+/* Desktop: Show the sections in the header */
+@media (min-width: 769px) {
+    .side-panel {
+        display: none;  /* No sidebar toggle in desktop */
     }
+
+    header nav ul {
+        display: flex;  /* Show sections in the header */
+        justify-content: space-evenly;
+    }
+
     header {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-    /* Hide sidebar in desktop view */
-    .side-panel {
-        display: none;
-    }
-    /* Show sidebar only when active */
-    .side-panel.active {
-        display: block;
-    }
 }
 
-/* Desktop view: Hide the menu toggle button */
-@media (min-width: 769px) {
-    #menu-toggle {
-        display: none;
+/* Mobile: Sidebar and toggle button */
+@media (max-width: 768px) {
+    header nav ul {
+        display: none;  /* Hide sections in mobile view */
     }
+
+    #menu-toggle {
+        display: block;  /* Show menu toggle button */
+    }
+
     .side-panel {
-        display: block;
+        display: none;  /* Hide sidebar in mobile by default */
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #333;
+        transition: 0.3s;
+    }
+
+    .side-panel.active {
+        left: 0;  /* Show sidebar when active */
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }
 
