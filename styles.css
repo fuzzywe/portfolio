@@ -1,16 +1,20 @@
-/* Laptop View (All options visible) */
+/* For Laptop View */
 @media (min-width: 769px) {
     .side-panel {
-        display: none;
+        display: block;
     }
 
     header nav ul {
-        display: flex;  /* All options visible in header */
+        display: flex;
         justify-content: space-evenly;
+    }
+
+    #menu-toggle {
+        display: none;
     }
 }
 
-/* Mobile View (Sidebar toggle) */
+/* For Mobile View */
 @media (max-width: 768px) {
     .side-panel {
         display: none;
@@ -28,11 +32,11 @@
     }
 
     header nav ul {
-        display: none;  /* Hide options in header */
+        display: none;
     }
 
     #menu-toggle {
-        display: block;  /* Show toggle button in mobile */
+        display: block;
     }
 }
 
