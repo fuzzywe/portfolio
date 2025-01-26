@@ -4,7 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* Default style for the sidebar */
+/* Sidebar */
 .side-panel {
     position: fixed;
     top: 0;
@@ -36,26 +36,36 @@
     text-decoration: none;
 }
 
-/* For the mobile menu toggle button */
-.menu-toggle {
-    font-size: 30px;
-    background: none;
-    border: none;
-    color: #333;
-    cursor: pointer;
-}
-
-/* Mobile view adjustments */
+/* Mobile view: Show the menu toggle button */
 @media (max-width: 768px) {
+    #menu-toggle {
+        display: block;
+    }
     header {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-    #menu-toggle {
+    /* Hide sidebar in desktop view */
+    .side-panel {
+        display: none;
+    }
+    /* Show sidebar only when active */
+    .side-panel.active {
         display: block;
     }
 }
+
+/* Desktop view: Hide the menu toggle button */
+@media (min-width: 769px) {
+    #menu-toggle {
+        display: none;
+    }
+    .side-panel {
+        display: block;
+    }
+}
+
 
 body {
     font-family: 'Poppins', sans-serif;
