@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
         chatbot.style.display = "block";
         openChatbotButton.style.display = "none";
     });
+document.getElementById('menu-toggle').onclick = function() {
+    document.getElementById('side-panel').classList.toggle('active');
+};
 
     // Close chatbot
     closeChatbotButton.addEventListener("click", () => {
