@@ -1,27 +1,587 @@
-/* Chatbot Container */
-#chatbot-container {
-    position: fixed;
-    bottom: 0;
-    right: 0;
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #f5f5f5;
+    background-color: #1a1a1a; /* Dark background for a modern look */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3, p {
+    margin-bottom: 15px;
+}
+
+/* Header and navigation */
+header {
+    background-color: #f2eae4; /* Bright orange header */
+    color: #ff6600;
+    padding: 50px 0;
+    text-align: center;
+}
+
+header img {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+   
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0.5px;
+    list-style-type: none;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: #333;
     z-index: 1000;
-    display: none;
+}
+
+nav ul li {
+    transition: background 0.3s ease;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    padding: 14px 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff6600; /* Hover effect: orange text */
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    padding: 0 20px;
+    background-color: #333; /* Dark background */
+    color: white;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.hero-image img {
+    max-width: 80%;
+    height: 2%;
+    border-radius: 80%;
+    box-shadow: 0 34px 56px rgba(0, 0, 0, 0.6);
+    border: 2px solid #ff6600;
+}
+
+.hero-text {
+    flex: 2;
+    padding: 10px;
+    color: #efebe9;
+    text-align: left;
+}
+
+.hero-text h2 {
+    font-size: 3em;
+    color:#ff6600;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1.4em;
+    line-height: 1.5;
+}
+
+.hero-text button {
+    background-color: #ff6600;
+    color: #ff6600;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.hero-text button:hover {
+    background-color: #e65c00;
+}
+
+/* About Me Section */
+.aboutme {
+    background-color: #f5f5f5;
+    color: #080808;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.aboutme h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ff6600;
+}
+
+.aboutme p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2em;
+}
+
+/* Skills Section */
+#skills {
+    background-color: #1a1a1a;
+    padding: 60px 20px;
+}
+
+#skills h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #ff6600;
+    margin-bottom: 40px;
+}
+
+.skills-list {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+}
+
+.skill-category {
+    flex: 1;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.skill-category h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #ff6600;
+}
+
+.skill-category ul {
+    list-style-type: none;
+}
+
+.skill-category ul li {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skill-progress {
+    background-color: #ff6600;
+    height: 8px;
+    width: 0%;
+    transition: width 1s ease-in-out;
+    border-radius: 4px;
+    flex: 1;
+    margin-left: 10px;
+}
+
+/* Set progress widths */
+.skill-progress[data-skill="Python"] {
+    width: 90%;
+}
+
+.skill-progress[data-skill="Java"] {
+    width: 80%;
+}
+
+.skill-progress[data-skill="C++"] {
+    width: 70%;
+}
+
+.skill-progress[data-skill="Jenkins"] {
+    width: 85%;
+}
+
+.skill-progress[data-skill="Docker"] {
+    width: 50%;
+}
+
+.skill-progress[data-skill="Kubernetes"] {
+    width: 75%;
+}
+
+/* Projects Section */
+#projects {
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 60px 20px;
+}
+
+#projects h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #ff6600;
+    margin-bottom: 40px;
+}
+
+.project-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.project-item {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-10px);
+}
+
+.project-item h3 {
+    font-size: 1.5rem;
+    color: #ff6600;
+    margin-bottom: 10px;
+}
+
+.project-item p {
+    font-size: 0.8rem;
+    margin-bottom: 30px;
+    align-content:left;
+}
+
+.project-item a {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.project-item a:hover {
+    background-color: #e65c00;
+}
+
+/* Certifications Section */
+.certifications {
+    background-color: #1a1a1a;
+    color: #f5f5f5;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.certifications h2 {
+    font-size: 2.5rem;
+    color: #ff6600;
+    margin-bottom: 40px;
+}
+
+.certification-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.certification-item {
+    background-color: #222;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.certification-item:hover {
+    transform: translateY(-10px);
+}
+
+.certification-item img {
+    width: 100%;
+    height: 40%;
+    margin-bottom: 15px;
+}
+
+.certification-details h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ff6600;
+}
+/* Style for the social section */
+.social-section {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #ff6600, #000); /* Orange and black gradient */
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5); /* Attractive shadow */
+    margin: 40px auto;
+    width: 40%; /* Adjust width */
+}
+
+/* Social media title */
+.social-section h2 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 2rem;
+}
+
+/* Social media icons layout */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Increased gap for better spacing */
+    margin-top: 20px;
+}
+
+/* Social media icons */
+.social-links a {
+    color: #fff;
+    font-size: 2rem; /* Increase size of icons */
+    transition: all 0.3s ease-in-out;
+    border-radius: 30%;
+    padding: 10px;
+    background-color: #333; /* Circular background behind icons */
+}
+
+/* Hover effect on icons */
+.social-links a:hover {
+    transform: scale(1.2); /* Enlarges the icon on hover */
+    color: #ff6600; /* Orange hover effect */
+    background-color: #fff; /* Background color change on hover */
+}
+
+/* Style for the icons */
+.social-links i {
+    transition: color 0.3s ease-in-out;
+}
+
+
+/* Contact Section */
+#contact {
+    background-color: white;
+    padding: 60px 20px;
+    color: white;
+    text-align: center;
+}
+
+#contact h2 {
+    font-size: 2.5rem;
+    color: #ff6600;
+    margin-bottom: 20px;
+}
+
+#contact form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact input, #contact textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: white;
+    color: BLACK;
+}
+
+#contact button {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+#contact button:hover {
+    background-color: #e65c00;
+}
+
+/* Footer */
+footer {
+    background-color:white;
+    color: #ff6600;
+    font-weight:bold ;
+
+    padding: 10px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+/* General Body Style */
+
+  nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+  }
+  
+  nav ul li {
+    margin: 0 15px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    color: #ff6600;
+  }
+  
+  section {
+    padding: 40px;
+    text-align: center;
+  }
+  
+  #cv {
+    background-color: #f0e8e8;
+    color:#000;
+  }
+  
+  .button-container {
+    margin-top: 20px;
+  }
+  
+  button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #ff6600;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: white;
+    color:#ff6600;
+  }
+  
+  iframe {
+    margin-top: 20px;
+    width: 80%;
+    height: 500px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  .project-item a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block; /* Ensures each link occupies its own line with proper spacing */
+    margin-bottom: 5px; /* Adds spacing between links */
+  }
+  
+  .project-item a:hover {
+    text-decoration: underline;
+  }
+  
+  
+  
+  .profile-photo {
+    width: 200px; /* Adjusted width */
+    height: 60%; /* Automatically adjusts height to maintain aspect ratio */
+    border-radius: 50%; /* Creates a circular profile photo */
+    border: 2px solid #ccc; /* Thin border for a clean look */
+    object-fit: cover; /* Ensures the image is cropped correctly */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .achievement {
+    padding: 20px;
+    background-color: #0e0f0f; /* Light background for contrast */
+    border-radius: 10px; /* Rounded edges for a clean look */
+    margin: 20px 0; /* Spacing between sections */
+   
+  }
+  
+  .achievement h2 {
+    font-size: 24px;
+    color:#ff6600;
+    /* Dark color for the heading */
+    text-align: center; /* Center-align the heading */
+    margin-bottom: 15px;
+  }
+  
+  .achievement p {
+    font-size: 18px;
+    color: white;
+    font-weight: bold; /* Neutral color for text */
+    line-height: 1.6; /* Improve readability */
+    margin-bottom: 5px; /* Spacing between paragraphs */
+  }
+  
+  .highlight-link {
+    color: #ff6600; /* Blue color for emphasis */
+    font-weight: bold; /* Bold font for better visibility */
+    text-decoration: none; /* No underline for cleaner look */
+    border-bottom: 2px solid #ff6600; /* Subtle underline effect */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease; /* Smooth hover transition */
+  }
+  
+  .highlight-link:hover {
+    color: white; /* Darker blue on hover */
+    border-bottom-color: #ff6600; /* Matching hover effect */
+  }
+
+ 
+
+  #chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
 }
 
 /* Chatbot Panel */
 #chatbot {
     display: none;
-    width: 100%;
-    height: 100%;
+    width: 350px;
+    height: 500px;
     background-color: white;
-    border-radius: 0;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     font-family: Arial, sans-serif;
     position: fixed;
-    bottom: 0;
-    right: 0;
+    bottom: 20px;
+    right: 20px;
 }
 
 /* Chatbot Header */
@@ -33,7 +593,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 0;
+    border-radius: 10px 10px 0 0;
 }
 
 #chatbot-header h4 {
@@ -53,25 +613,11 @@
     flex-grow: 1;
     overflow-y: auto;
     padding: 10px;
-    height: calc(100vh - 120px); /* Adjust height for mobile */
-}
-
-/* Input and Send Button */
-.chat-input-container {
-    display: flex;
-    gap: 8px;
-    padding: 10px;
-    background-color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #input {
-    flex-grow: 1;
+    width: 80%;
     padding: 10px;
-    font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
@@ -83,7 +629,6 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
 }
 
 /* Floating Open Button */
@@ -99,49 +644,264 @@
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-size: 20px;
-    z-index: 1001;
 }
 
-/* Media Queries for Mobile */
+#chatbot {
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    width: 90%; /* Adjust for mobile screen */
+    max-height: 50vh; /* Limit height to half screen */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 9999;
+}
+#open-chatbot, #close-chatbot {
+    font-size: 14px;
+    padding: 8px 12px;
+}
+
+#input {
+    width: 80%;  /* Make input field take up more space */
+    padding: 10px;
+    font-size: 16px;
+}
+.interview-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.interview-card {
+    flex: 1 1 calc(100% - 20px); /* Each card takes full width on small screens */
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 @media screen and (max-width: 768px) {
-    #chatbot-container {
-        width: 100%;
-        height: 100vh;
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        z-index: 1000;
-        display: none;
+    h1, h2, h3 {
+        font-size: 18px;
+    }
+    
+    p {
+        font-size: 14px;
     }
 
-    #chatbot {
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-        position: relative;
+    .interview-question {
+        margin-bottom: 12px;
     }
+}
+.container {
+    padding: 10px;
+}
 
-    #messages {
-        height: calc(100vh - 120px);
-    }
-
-    #input {
-        width: 70%;
-    }
-
-    #send-message {
-        width: 25%;
-    }
-
-    #open-chatbot {
-        bottom: 10px;
-        right: 10px;
-        padding: 12px;
-        font-size: 16px;
-    }
+.section {
+    padding: 20px;
+    margin: 10px 0;
 }
 
 @media screen and (max-width: 480px) {
+    .header, .footer {
+        text-align: center;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr; /* Make skills one column on small screens */
+    }
+}
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+button, a {
+    touch-action: manipulation;
+    padding: 12px;
+    font-size: 16px;
+}
+
+#send-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+#send-button:active {
+    background-color: #0056b3;
+}
+
+#chatbot {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.chat-input-container {
+    display: flex;
+    gap: 8px;
+}
+
+#input {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#send-button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: auto;
+}
+@media screen and (max-width: 768px) {
+    /* General adjustments */
+    body {
+        font-size: 14px;
+        padding: 0;
+    }
+
+    /* Navigation adjustments */
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+        position: static;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #444;
+    }
+
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    /* Hero section adjustments */
+    .hero {
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        padding: 20px 0;
+    }
+
+    .hero-text h2 {
+        font-size: 2em;
+    }
+
+    .hero-text p {
+        font-size: 1.1em;
+    }
+
+    .hero-image img {
+        max-width: 60%;
+        margin: 20px auto;
+    }
+
+    /* Skills section adjustments */
+    .skills-list {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .skill-category {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Projects section adjustments */
+    .project-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-item {
+        width: 90%;
+        max-width: none;
+        margin-bottom: 20px;
+    }
+
+    /* Certifications section adjustments */
+    .certification-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .certification-item {
+        width: 90%;
+        max-width: none;
+    }
+
+    /* Social section adjustments */
+    .social-section {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .social-links {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .social-links a {
+        font-size: 1.5rem;
+    }
+
+    /* Contact form adjustments */
+    #contact form {
+        width: 90%;
+        padding: 0 15px;
+    }
+
+    #contact input,
+    #contact textarea {
+        margin-bottom: 15px;
+    }
+
+    /* Achievement section adjustments */
+    .achievement {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .achievement h2 {
+        font-size: 20px;
+    }
+
+    .achievement p {
+        font-size: 16px;
+    }
+
+    /* Profile photo adjustments */
+    .profile-photo {
+        width: 150px;
+        height: auto;
+        margin: 20px auto;
+    }
+
+    /* CV section adjustments */
+    iframe {
+        width: 95%;
+        height: 400px;
+    }
+
+    /* Button adjustments */
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    /* Chatbot adjustments */
     #chatbot-container {
         width: 100%;
         height: 100vh;
@@ -177,4 +937,224 @@
         padding: 12px;
         font-size: 16px;
     }
+}
+
+/* Small phones */
+@media screen and (max-width: 480px) {
+    .hero-text h2 {
+        font-size: 1.8em;
+    }
+
+    .hero-text p {
+        font-size: 1em;
+    }
+
+    .social-links a {
+        font-size: 1.2rem;
+        padding: 8px;
+    }
+
+    #contact h2,
+    #projects h2,
+    #skills h2,
+    .certifications h2 {
+        font-size: 2rem;
+    }
+}
+.projects {
+  display: flex;
+  flex-direction: row; /* Default layout */
+  gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .projects {
+    flex-direction: column; /* Stacked layout for smaller screens */
+  }
+}
+.about-me {
+  padding: 2rem; /* Default padding */
+}
+
+@media screen and (max-width: 768px) {
+  .about-me {
+    padding: 1rem; /* Reduced padding for mobile */
+    margin-bottom: 1rem; /* Adjust margin as needed */
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+    /* Previous mobile styles remain the same until the about me section */
+
+    /* About Me section adjustments */
+    .aboutme {
+        padding: 30px 15px; /* Reduced padding */
+    }
+
+    .aboutme h2 {
+        font-size: 2em;
+        margin-bottom: 15px; /* Reduced margin */
+    }
+
+    .aboutme p {
+        font-size: 1em;
+        line-height: 1.4; /* Reduced line height */
+        margin-bottom: 10px; /* Reduced margin */
+    }
+
+    /* Projects section adjustments */
+    #projects {
+        padding: 30px 15px;
+    }
+
+    .project-grid {
+        display: block; /* Change to block display */
+        padding: 0 10px;
+    }
+
+    .project-item {
+        width: 100%;
+        max-width: none;
+        margin: 0 auto 20px; /* Center align with bottom margin only */
+        padding: 15px;
+    }
+
+    .project-item:last-child {
+        margin-bottom: 0; /* Remove margin from last item */
+    }
+
+    .project-item h3 {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+    }
+
+    .project-item p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+
+    .project-item a {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    /* Rest of the mobile styles remain the same */
+}
+
+/* Small phones */
+@media screen and (max-width: 480px) {
+    /* Previous small phone styles remain the same */
+
+    .aboutme {
+        padding: 25px 12px; /* Even more reduced padding for smaller phones */
+    }
+
+    .aboutme h2 {
+        font-size: 1.8em;
+    }
+
+    .aboutme p {
+        font-size: 0.9em;
+    }
+
+    .project-item {
+        margin-bottom: 15px; /* Slightly reduced margin for smaller screens */
+    }
+
+    .project-item h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Rest of the small phone styles remain the same */
+}
+/* Previous CSS remains the same until the media queries section */
+
+@media screen and (max-width: 768px) {
+    /* Previous mobile styles remain the same until projects section */
+
+    /* Projects section adjustments */
+    #projects {
+        padding: 30px 15px;
+    }
+
+    .project-grid {
+        display: flex;
+        flex-direction: column; /* Stack projects vertically */
+        align-items: center;
+        gap: 20px; /* Consistent spacing between projects */
+    }
+
+    .project-item {
+        width: 100%;
+        max-width: none;
+        margin: 0; /* Remove margins as we're using gap */
+        padding: 15px;
+        display: block; /* Ensure block display */
+    }
+
+    .project-item h3 {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+    }
+
+    .project-item p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+
+    /* Certifications section adjustments */
+    .certifications {
+        padding: 30px 15px;
+    }
+
+    .certification-list {
+        display: flex;
+        flex-direction: column; /* Stack certifications vertically */
+        align-items: center;
+        gap: 20px; /* Consistent spacing between certifications */
+    }
+
+    .certification-item {
+        width: 100%;
+        max-width: none;
+        margin: 0; /* Remove margins as we're using gap */
+        padding: 15px;
+        display: block; /* Ensure block display */
+    }
+
+    .certification-item img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .certification-item h3 {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+    }
+
+    /* Rest of the mobile styles remain the same */
+}
+
+/* Small phones */
+@media screen and (max-width: 480px) {
+    /* Previous small phone styles remain the same */
+
+    .project-grid {
+        gap: 15px; /* Slightly reduced spacing for smaller screens */
+    }
+
+    .certification-list {
+        gap: 15px; /* Slightly reduced spacing for smaller screens */
+    }
+
+    .project-item,
+    .certification-item {
+        padding: 12px;
+    }
+
+    /* Rest of the small phone styles remain the same */
 }
