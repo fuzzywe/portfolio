@@ -196,84 +196,100 @@ nav ul li a:hover {
 }
 
 /* Skills Section */
+/* Skills Section Styles */
 #skills {
     background-color: #1a1a1a;
-    padding: 60px 20px;
+    padding: 4rem 2rem;
 }
 
 #skills h2 {
     text-align: center;
     font-size: 2.5rem;
     color: #ff6600;
-    margin-bottom: 40px;
+    margin-bottom: 3rem;
 }
 
-.skills-list {
-    display: flex;
-    justify-content: space-around;
-    gap: 40px;
+.skills-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
 .skill-category {
-    flex: 1;
     background-color: #222;
-    padding: 20px;
+    padding: 1.5rem;
     border-radius: 8px;
-    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .skill-category h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
     color: #ff6600;
+    text-align: center;
 }
 
 .skill-category ul {
-    list-style-type: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.skill-category ul li {
-    margin-bottom: 15px;
+.skill-category li {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 1rem;
 }
 
 .skill-progress {
-    background-color: #ff6600;
-    height: 8px;
-    width: 0%;
-    transition: width 1s ease-in-out;
-    border-radius: 4px;
     flex: 1;
-    margin-left: 10px;
+    height: 8px;
+    background-color: #333;
+    border-radius: 4px;
+    margin-left: 1rem;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Set progress widths */
-.skill-progress[data-skill="Python"] {
-    width: 90%;
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #ff6600;
+    border-radius: 4px;
+    width: var(--progress);
+    transition: width 1s ease-in-out;
 }
 
-.skill-progress[data-skill="Java"] {
-    width: 80%;
+/* Set progress bar widths using CSS custom properties */
+.skill-progress[data-level] {
+    --progress: calc(attr(data-level) * 1%);
 }
 
-.skill-progress[data-skill="C++"] {
-    width: 70%;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #skills {
+        padding: 2rem 1rem;
+    }
+    
+    .skill-category {
+        padding: 1rem;
+    }
 }
-
-.skill-progress[data-skill="Jenkins"] {
-    width: 85%;
-}
-
-.skill-progress[data-skill="Docker"] {
-    width: 50%;
-}
-
-.skill-progress[data-skill="Kubernetes"] {
-    width: 75%;
-}
-
 /* Projects Section */
 #projects {
     background-color: #f5f5f5;
