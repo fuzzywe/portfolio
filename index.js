@@ -1,3 +1,11 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const progressBars = document.querySelectorAll('.skill-progress');
+    progressBars.forEach(bar => {
+        const level = bar.getAttribute('data-level');
+        bar.style.setProperty('--progress', `${level}%`);
+    });
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const inputField = document.getElementById("input");
     const openChatbotButton = document.getElementById("open-chatbot");
